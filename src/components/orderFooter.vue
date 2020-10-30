@@ -1,9 +1,9 @@
 <template>
-    <div>product</div>
+    <div>orderFooter</div>
 </template>
 
 <script>
 export default {
-    name:'product',
+    name:'order-footer',
 }
 </script>

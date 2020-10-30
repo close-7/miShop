@@ -6,7 +6,10 @@ module.exports = {
         proxy:{
             '/api':{
                 target:'https://www.imooc.com',
-                changeOrigin:false
+                changeOrigin:false,
+                pathRewrite:{
+                    '/api':''
+                }
             }
         }
     }

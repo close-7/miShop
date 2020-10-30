@@ -8,17 +8,35 @@ Head:默认开发分支
 Head^:head的父提交
 ### git 操作命令
 创建版本仓库           git clone <url>
+
+
 初始化本地版仓库        git init 
 
 ### 修改和提交             
 查看状态                git status
+
+
 查看变更内容             git diff
+
+
 跟踪所有改动过的文件      git add .
+
+
 跟踪指定的文件           git add <file>
+
+
 文件改名                git mv <old> <new>
+
+
 删除文件                git rm <file>
+
+
 停止跟踪文件但不删除      git rm --cached <file>
+
+
 提交所有更新过的文件      git commit -m 'commit message'
+
+
 修改最后一次提交         git commit --amend
 
 ### 查看提交历史
@@ -64,3 +82,8 @@ cors跨域-服务端设置，前端直接调用
 jsonp跨域-前端适配，后台配合
 
 说明：前后台同时改造
+
+### 接口代理
+接口代理-通过修改nginx服务器配置来是实现
+
+说明：前端修改，后台不动

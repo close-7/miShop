@@ -92,3 +92,12 @@ https://gitee.com/imooccode/happymmallwiki/wikis/%E5%90%8E%E5%8F%B0_%E4%BA%A7%E5
 
 # 基本插件
 npm i vue-lazyload element-ui node-sass sass-loader vue-awesome-swiper vue-axios vue-cookie --save-dev
+
+
+# Storage封装
+Cookie,localstorage,sessionStorage区别
+存储大小：cookie4k，storage5m
+有效期：cookie拥有有效期，storage永久存储
+cookie会通过请求发送到服务端，存储在内存中。storage只存储在浏览器端
+路径：cookie有路径限制，storage只存储在域名下
+api：cookie没有特定的api，storage有对应的api

@@ -7,42 +7,14 @@
             <li class="menu-item">
               <a href="javascript:;">手机 电话卡</a>
               <div class="children">
-                <ul>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米CC9</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-2.png" alt="">小米8 青春版</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-3.jpg" alt="">Redmi K20 Pro</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-4.jpg" alt="">移动4G+专区</a></li>
-                  </ul>
-                  <ul>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米CC美图定制版</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米8 屏幕指纹版</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">Redmi K20</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米移动 电话卡</a></li>
-                  </ul>
-                  <ul>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.jpg" alt="">小米9</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                  </ul>
-                  <ul>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                  </ul>
-                  <ul>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                  </ul>
-                  <ul>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                    <li><a href="" id=""><img src="/imgs/item-box-1.png" alt="">小米9</a></li>
-                  </ul>
+                <ul v-for="(item,i) in menuList" v-bind:key="i">
+                  <li v-for="(sub,j) in item" v-bind:key="j">
+                    <a v-bind:href="sub?'/#/product/'+sub.id:''">
+                      <img v-bind:src="sub?sub.img:'/imgs/item-box-1.png'" alt="">
+                      {{sub?sub.name:'小米9'}}
+                    </a>
+                  </li>
+                </ul>
               </div>
             </li>
             <li class="menu-item">
@@ -69,12 +41,9 @@
           </ul>
         </div>
         <swiper v-bind:options="swiperOption">
-          <!-- slides -->
-          <swiper-slide><img src="/imgs/slider/slide-1.jpg" alt=""></swiper-slide>
-          <swiper-slide><img src="/imgs/slider/slide-2.jpg" alt=""></swiper-slide>
-          <swiper-slide><img src="/imgs/slider/slide-3.jpg" alt=""></swiper-slide>
-          <swiper-slide><img src="/imgs/slider/slide-4.jpg" alt=""></swiper-slide>
-          <swiper-slide><img src="/imgs/slider/slide-5.jpg" alt=""></swiper-slide>
+          <swiper-slide v-for="(item,index) in slideList" v-bind:key="index">
+            <a v-bind:href="'/#/product/'+item.id"><img v-bind:src="item.img"></a>
+          </swiper-slide>
           <!-- Optional controls -->
           <div class="swiper-pagination"  slot="pagination"></div>
           <div class="swiper-button-prev" slot="button-prev"></div>
@@ -82,14 +51,13 @@
         </swiper>
       </div>
       <div class="ads-box">
-        <a href="" id=""><img src="/imgs/ads/ads-1.png" alt=""></a>
-        <a href="" id=""><img src="/imgs/ads/ads-2.jpg" alt=""></a>
-        <a href="" id=""><img src="/imgs/ads/ads-3.png" alt=""></a>
-        <a href="" id=""><img src="/imgs/ads/ads-4.jpg" alt=""></a>
+        <a v-bind:href="'/#/product/'+item.id" v-for="(item,index) in adsList" v-bind:key="index">
+          <img v-lazy="item.img" alt="">
+        </a>
       </div>
       <div class="banner">
         <a href="/#/product/30">
-          <img src="/imgs/banner-1.png" alt="">
+          <img v-lazy="'/imgs/banner-1.png'" alt="">
         </a>
       </div>
     </div>
@@ -98,82 +66,19 @@
         <h2>手机</h2>
         <div class="wrapper">
           <div class="banner-left">
-            <a href="/#/product/35"><img src="/imgs/mix-alpha.jpg" alt=""></a>
+            <a href="/#/product/35"><img v-lazy="'/imgs/mix-alpha.jpg'" alt=""></a>
           </div>
           <div class="list-box">
-            <div class="list">
-              <div class="item">
-                <span class="new-pro">新品</span>
-                <div class="item-img"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6f2493e6c6fe8e2485c407e5d75e3651.jpg" alt=""></div>
-                <div class="item-info">
-                  <h3>Redmi K20 Pro 6GB+128GB</h3>
-                  <p>骁龙855， 弹出全面屏</p>
-                  <p class="price">2999元</p>
+            <div class="list" v-for="(arr,i) in phoneList" v-bind:key="i">
+              <div class="item" v-for="(item,j) in arr" v-bind:key="j">
+                <span v-bind:class="{'new-pro':j%2==0}">新品</span>
+                <div class="item-img">
+                  <img v-lazy="item.mainImage" alt="">
                 </div>
-              </div>
-              <div class="item">
-                <span class="kill-pro">新品</span>
-                <div class="item-img"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4c87947d104ee5833913e4c520108f16.jpg" alt=""></div>
                 <div class="item-info">
-                  <h3>Redmi Note 7</h3>
-                  <p>4800万拍照千元机</p>
-                  <p class="price">1199元</p>
-                </div>
-              </div>
-              <div class="item">
-                <span></span>
-                <div class="item-img"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8737a33c78a94bc36afb860ab23b3939.jpg" alt=""></div>
-                <div class="item-info">
-                  <h3>小米9 王源限量版</h3>
-                  <p>骁龙855，索尼4800万三摄</p>
-                  <p class="price">3599元</p>
-                </div>
-              </div>
-              <div class="item">
-                <span></span>
-                <div class="item-img"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0ce61b71e2f81df62bd0c05aaa901d22.jpg" alt=""></div>
-                <div class="item-info">
-                  <h3>小米MIX 3 8GB+128GB</h3>
-                  <p>DxO百分拍照手机</p>
-                  <p class="price">2599元</p>
-                </div>
-              </div>
-            </div>
-            <div class="list">
-              <div class="item">
-                <span></span>
-                <div class="item-img"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9aab8a7fa9005ef918c9aa2d5f17c806.jpg" alt=""></div>
-                <div class="item-info">
-                  <h3>小米CC9e</h3>
-                  <p>3200万自拍，4800万三摄</p>
-                  <p class="price">1299元</p>
-                </div>
-              </div>
-              <div class="item">
-                <span></span>
-                <div class="item-img"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3c1af9783bdc53ed843af5655ca92009.jpg" alt=""></div>
-                <div class="item-info">
-                  <h3>小米CC9</h3>
-                  <p>3200万自拍，4800万三摄</p>
-                  <p class="price">1799元</p>
-                </div>
-              </div>
-              <div class="item">
-                <span></span>
-                <div class="item-img"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/bd25cc614a670f4d5546fe82e239ef86.jpg" alt=""></div>
-                <div class="item-info">
-                  <h3>小米CC9 8GB+256GB 美图定制版</h3>
-                  <p>8GB+256GB，100%美图相机</p>
-                  <p class="price">2599元</p>
-                </div>
-              </div>
-              <div class="item">
-                <span></span>
-                <div class="item-img"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ca9b4f81af709935556bef9aa21a90e8.jpg" alt=""></div>
-                <div class="item-info">
-                  <h3>Redmi Note 7 Pro</h3>
-                  <p>索尼4800万超清拍照</p>
-                  <p class="price">1399元</p>
+                  <h3>{{item.name}}</h3>
+                  <p>{{item.subtitle}}</p>
+                  <p class="price" @click="addCart(item.id)">{{item.price}}元</p>
                 </div>
               </div>
             </div>
@@ -182,19 +87,33 @@
       </div>
     </div>
     <service-bar></service-bar>
+    <modal 
+      title="提示" 
+      sureText="查看购物车" 
+      btnType="1" 
+      modalType="middle" 
+      v-bind:showModal="showModal"
+      v-on:submit="goToCart"
+      v-on:cancel="showModal=false"
+      >
+      <template v-slot:body>
+        <p>商品添加成功！</p>
+      </template>
+    </modal>
   </div>
 </template>
-
 <script>
   import ServiceBar from './../components/ServiceBar'
+  import Modal from './../components/Modal'
   import { swiper, swiperSlide } from 'vue-awesome-swiper'
-  import 'vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css'
+  import 'swiper/swiper-bundle.css'
   export default{
     name:'index',
     components:{
       swiper,
       swiperSlide,
       ServiceBar,
+      Modal
     },
     data(){
       return {
@@ -214,7 +133,98 @@
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
           }
-        }
+        },
+        slideList:[
+          {
+            id:'42',
+            img:'/imgs/slider/slide-1.jpg'
+          },
+          {
+            id:'45',
+            img:'/imgs/slider/slide-2.jpg'
+          },
+          {
+            id:'46',
+            img:'/imgs/slider/slide-3.jpg'
+          },
+          {
+            id:'',
+            img:'/imgs/slider/slide-4.jpg'
+          },
+          {
+            id:'',
+            img:'/imgs/slider/slide-1.jpg'
+          }
+        ],
+        menuList:[
+          [
+            {
+              id:30,
+              img:'/imgs/item-box-1.png',
+              name:'小米CC9',
+            },{
+              id:31,
+              img:'/imgs/item-box-2.png',
+              name:'小米8青春版',
+            },{
+              id:32,
+              img:'/imgs/item-box-3.jpg',
+              name:'Redmi K20 Pro',
+            },{
+              id:33,
+              img:'/imgs/item-box-4.jpg',
+              name:'移动4G专区',
+            }
+          ],
+          [0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]
+        ],
+        adsList:[
+          {
+            id:33,
+            img:'/imgs/ads/ads-1.png'
+          },{
+            id:48,
+            img:'/imgs/ads/ads-2.jpg'
+          },{
+            id:45,
+            img:'/imgs/ads/ads-3.png'
+          },{
+            id:47,
+            img:'/imgs/ads/ads-4.jpg'
+          }
+        ],
+        phoneList:[],
+        showModal:false
+      }
+    },
+    mounted(){
+      this.init();
+    },
+    methods:{
+      init(){
+        this.axios.get('/products',{
+          params:{
+            categoryId:100012,
+            pageSize:14
+          }
+        }).then((res)=>{
+          res.list = res.list.slice(6,14);
+          this.phoneList = [res.list.slice(0,4),res.list.slice(4,8)];
+        })
+      },
+      addCart(id){
+        this.axios.post('/carts',{
+          productId:id,
+          selected: true
+        }).then((res)=>{
+          this.showModal = true;
+          this.$store.dispatch('saveCartCount',res.cartTotalQuantity);
+        }).catch(()=>{
+          this.showModal = true;
+        });
+      },
+      goToCart(){
+        this.$router.push('/cart');
       }
     }
   }

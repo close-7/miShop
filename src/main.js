@@ -3,9 +3,18 @@ import App from './App.vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import router from './router'
+// import env from './env'
+
+// 设置mock启用开关
+const mock = true;
+if(mock){
+  require('./mock/api');
+}
 
 axios.defaults.baseURL = '/api';
 axios.defaults.timeout = 8000;
+//根据环境变量获取url
+// axios.defaults.baseURL = env.baseURL;
 //接口错误拦截
 axios.interceptors.response.use(function(response){
   let res = response.data;
